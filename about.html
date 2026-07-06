@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Antique 的个人信息、研究方向、技术栈与生活兴趣。">
+  <meta name="theme-color" content="#eef8f5">
+  <title>个人信息 · Antique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="返回首页"><span class="brand-mark">A</span><span>Antique</span></a>
+    <nav aria-label="主导航">
+      <a href="index.html">主页</a>
+      <a class="active" href="about.html">个人信息</a>
+      <a href="projects.html">项目列表</a>
+    </nav>
+    <a class="header-github" href="https://github.com/0Antique" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </header>
+
+  <main class="inner-page">
+    <section class="page-intro">
+      <p class="eyebrow"><span></span> ABOUT ME</p>
+      <h1>个人信息</h1>
+      <p>研究未来，也认真生活。</p>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="section-heading"><p class="section-index">01 / PROFILE</p><h2>你好，我是<br>Antique.</h2></div>
+      <div class="about-content">
+        <p class="lead">我是一名计算机科学专业的硕士研究生，关注联邦学习与基于大语言模型的智能体。</p>
+        <p>我相信技术的意义不只在于追逐指标，也在于理解人、连接人，并创造更好的可能。权当年轻留个纪念——保持好奇，持续构建。</p>
+        <div class="facts">
+          <div><strong>Research</strong><span>Federated Learning</span></div>
+          <div><strong>Focus</strong><span>LLM-Based Agents</span></div>
+          <div><strong>Personality</strong><span>ESTJ</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section stack" id="stack">
+      <div class="section-heading compact"><p class="section-index">02 / STACK</p><h2>Tools I build with.</h2></div>
+      <div class="stack-grid">
+        <article class="stack-card accent-blue"><span class="card-number">01</span><h3>Development</h3><p>从界面到服务，关注完整的产品实现。</p><div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vue.js</span><span>Java</span><span>Spring</span><span>MySQL</span><span>Redis</span></div></article>
+        <article class="stack-card accent-green"><span class="card-number">02</span><h3>Machine Learning</h3><p>探索智能系统的训练、协作与应用。</p><div class="chips"><span>Python</span><span>PyTorch</span><span>Federated Learning</span><span>LLM Agents</span></div></article>
+        <article class="stack-card accent-orange"><span class="card-number">03</span><h3>Engineering</h3><p>用可靠的工具把想法带到真实世界。</p><div class="chips"><span>Linux</span><span>Git</span><span>Docker</span><span>Nginx</span><span>LaTeX</span><span>C</span></div></article>
+      </div>
+    </section>
+
+    <section class="section life" id="life">
+      <div class="section-heading compact"><p class="section-index">03 / BEYOND CODE</p><h2>Life, in motion.</h2></div>
+      <div class="life-grid">
+        <article class="life-card music"><span>♫</span><h3>Music Enthusiast</h3><p>King of Karaoke · Pop · Rock<br>Vae · Bruce Liang · David Tao · Wu Bai</p></article>
+        <article class="life-card travel"><span>⌁</span><h3>World Explorer</h3><p>9+ provinces · 15+ cities<br>City walks, local food, and stories.</p></article>
+        <article class="life-card sport"><span>↗</span><h3>Sports & Games</h3><p>Half marathon PB 1:58:56<br>Badminton · Cycling · Swimming · Mahjong</p></article>
+      </div>
+    </section>
+  </main>
+  <footer><span>© <span id="year"></span> Antique</span><span>It was the best of times, it was the worst of times.</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Antique 的个人网站：联邦学习、LLM 智能体、技术与生活。">
-  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Antique 的个人网站：联邦学习、LLM 智能体、开源项目与生活。">
+  <meta name="theme-color" content="#edf7f4">
   <title>Antique · AI Researcher & Builder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,124 +12,56 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
   <header class="site-header">
-    <a class="brand" href="#home" aria-label="返回首页">
-      <span class="brand-dot"></span>
-      <span>Antique</span>
-    </a>
+    <a class="brand" href="index.html" aria-label="返回首页"><span class="brand-mark">A</span><span>Antique</span></a>
     <nav aria-label="主导航">
-      <a href="#about">关于</a>
-      <a href="#stack">技术栈</a>
-      <a href="#life">生活</a>
-      <a href="#contact">联系</a>
+      <a class="active" href="index.html">主页</a>
+      <a href="about.html">个人信息</a>
+      <a href="projects.html">项目列表</a>
     </nav>
-    <a class="header-github" href="https://github.com/0Antique" target="_blank" rel="noreferrer">GitHub ↗</a>
+    <a class="header-github" href="https://github.com/0Antique" target="_blank" rel="noreferrer" aria-label="访问 GitHub">GitHub <span>↗</span></a>
   </header>
 
-  <main>
-    <section class="hero" id="home">
+  <main class="home-main">
+    <section class="home-hero">
       <div class="hero-copy">
-        <p class="eyebrow"><span></span> COMPUTER SCIENCE · AI RESEARCH</p>
-        <h1>你好，我是<br><em>Antique.</em></h1>
-        <p class="hero-intro">计算机科学硕士生，研究方向为<br><strong>Federated Learning & LLM-Based Agents</strong></p>
+        <p class="eyebrow"><span></span> AI RESEARCH · OPEN SOURCE</p>
+        <h1>你好，<br>我是 <em>Antique</em></h1>
+        <p class="hero-intro">计算机科学硕士生，探索<br><strong>Federated Learning & LLM-Based Agents</strong></p>
         <p class="hero-note">AI will change the world. I am fortunate to have encountered it.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#about">认识我</a>
-          <a class="button secondary" href="https://github.com/0Antique" target="_blank" rel="noreferrer">查看 GitHub</a>
+          <a class="button primary" href="about.html">认识我 <span>→</span></a>
+          <a class="button secondary" href="projects.html">浏览项目 <span>↗</span></a>
         </div>
       </div>
 
-      <div class="hero-visual" aria-label="Antique 个人标识">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="portrait-card">
-          <img src="https://raw.githubusercontent.com/0Antique/0Antique/main/images/logo.jpg" alt="Antique logo">
-          <div class="status"><span></span> Exploring AI</div>
-        </div>
-        <div class="floating-tag tag-one">Peace & Love</div>
-        <div class="floating-tag tag-two">ESTJ</div>
+      <div class="profile-scene" aria-label="Antique 个人头像">
+        <div class="profile-halo"></div>
+        <figure class="profile-card glass-card">
+          <div class="profile-image-wrap">
+            <img src="https://avatars.githubusercontent.com/u/92249190?v=4" alt="Antique 的 GitHub 头像" width="420" height="420">
+          </div>
+          <figcaption><span class="online-dot"></span><span>Exploring AI</span><small>Harbin · China</small></figcaption>
+        </figure>
+        <span class="float-label label-one">Peace & Love</span>
+        <span class="float-label label-two">ESTJ</span>
+        <span class="float-spark" aria-hidden="true">✦</span>
       </div>
     </section>
 
-    <section class="manifesto" aria-label="个人信念">
-      <p>不朽也不变，那是故事片段。</p>
-      <span>We are the world, we are the children.</span>
-    </section>
-
-    <section class="section about" id="about">
-      <div class="section-heading">
-        <p class="section-index">01 / ABOUT</p>
-        <h2>研究未来，<br>也认真生活。</h2>
-      </div>
-      <div class="about-content">
-        <p class="lead">我是一名计算机科学专业的硕士研究生，关注联邦学习与基于大语言模型的智能体。</p>
-        <p>我相信技术的意义不只在于追逐指标，也在于理解人、连接人，并创造更好的可能。权当年轻留个纪念——保持好奇，持续构建。</p>
-        <div class="facts">
-          <div><strong>Research</strong><span>Federated Learning</span></div>
-          <div><strong>Focus</strong><span>LLM-Based Agents</span></div>
-          <div><strong>Personality</strong><span>ESTJ</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section stack" id="stack">
-      <div class="section-heading compact">
-        <p class="section-index">02 / STACK</p>
-        <h2>Tools I build with.</h2>
-      </div>
-      <div class="stack-grid">
-        <article class="stack-card accent-blue">
-          <span class="card-number">01</span>
-          <h3>Development</h3>
-          <p>从界面到服务，关注完整的产品实现。</p>
-          <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vue.js</span><span>Java</span><span>Spring</span><span>MySQL</span><span>Redis</span></div>
-        </article>
-        <article class="stack-card accent-green">
-          <span class="card-number">02</span>
-          <h3>Machine Learning</h3>
-          <p>探索智能系统的训练、协作与应用。</p>
-          <div class="chips"><span>Python</span><span>PyTorch</span><span>Federated Learning</span><span>LLM Agents</span></div>
-        </article>
-        <article class="stack-card accent-orange">
-          <span class="card-number">03</span>
-          <h3>Engineering</h3>
-          <p>用可靠的工具把想法带到真实世界。</p>
-          <div class="chips"><span>Linux</span><span>Git</span><span>Docker</span><span>Nginx</span><span>LaTeX</span><span>C</span></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section life" id="life">
-      <div class="section-heading compact">
-        <p class="section-index">03 / BEYOND CODE</p>
-        <h2>Life, in motion.</h2>
-      </div>
-      <div class="life-grid">
-        <article class="life-card music"><span>♫</span><h3>Music Enthusiast</h3><p>King of Karaoke · Pop · Rock<br>Vae · Bruce Liang · David Tao · Wu Bai</p></article>
-        <article class="life-card travel"><span>⌁</span><h3>World Explorer</h3><p>9+ provinces · 15+ cities<br>City walks, local food, and stories.</p></article>
-        <article class="life-card sport"><span>↗</span><h3>Sports & Games</h3><p>Half marathon PB 1:58:56<br>Badminton · Cycling · Swimming · Mahjong</p></article>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <p class="section-index">04 / CONTACT</p>
-      <h2>Let's change<br>the world.</h2>
-      <p>如果你也对 AI、研究或有趣的事感兴趣，欢迎来聊。</p>
-      <div class="contact-links">
-        <a href="mailto:177885778@qq.com">Email ↗</a>
-        <a href="https://space.bilibili.com/442593230" target="_blank" rel="noreferrer">Bilibili ↗</a>
-        <a href="https://www.xiaohongshu.com/user/profile/69cf4f9f000000003201ca5e" target="_blank" rel="noreferrer">小红书 ↗</a>
-        <a href="https://blog.csdn.net/m0_56514491" target="_blank" rel="noreferrer">CSDN ↗</a>
-      </div>
+    <section class="home-cards" aria-label="网站内容导览">
+      <a class="portal-card glass-card portal-about" href="about.html">
+        <span class="portal-index">01</span><div><p>ABOUT ME</p><h2>个人信息</h2><span>研究、技术与生活 →</span></div>
+      </a>
+      <a class="portal-card glass-card portal-projects" href="projects.html">
+        <span class="portal-index">02</span><div><p>OPEN SOURCE</p><h2>项目列表</h2><span>查看全部公开仓库 →</span></div>
+      </a>
+      <div class="quote-card glass-card"><span>“</span><p>不朽也不变，<br>那是故事片段。</p><small>KEEP CURIOUS · KEEP BUILDING</small></div>
     </section>
   </main>
 
-  <footer>
-    <span>© <span id="year"></span> Antique</span>
-    <span>It was the best of times, it was the worst of times.</span>
-  </footer>
-
+  <footer><span>© <span id="year"></span> Antique</span><span>It was the best of times, it was the worst of times.</span></footer>
   <script src="script.js"></script>
 </body>
 </html>

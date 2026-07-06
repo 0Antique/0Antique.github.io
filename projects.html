@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Antique 的 GitHub 项目列表。">
+  <meta name="theme-color" content="#eef8f5">
+  <title>项目列表 · Antique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="返回首页"><span class="brand-mark">A</span><span>Antique</span></a>
+    <nav aria-label="主导航">
+      <a href="index.html">主页</a>
+      <a href="about.html">个人信息</a>
+      <a class="active" href="projects.html">项目列表</a>
+    </nav>
+    <a class="header-github" href="https://github.com/0Antique" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </header>
+
+  <main class="inner-page">
+    <section class="page-intro">
+      <p class="eyebrow"><span></span> OPEN SOURCE</p>
+      <h1>项目列表</h1>
+      <p>置顶项目优先展示，其余公开仓库按最近更新时间排列。</p>
+    </section>
+    <section class="projects-section" aria-live="polite">
+      <div id="project-grid" class="project-grid">
+        <p class="project-state">正在从 GitHub 获取项目…</p>
+      </div>
+      <noscript><p class="project-state">请启用 JavaScript，或前往 <a href="https://github.com/0Antique?tab=repositories">GitHub 仓库列表</a>查看全部项目。</p></noscript>
+    </section>
+  </main>
+  <footer><span>© <span id="year"></span> Antique</span><span>Build in public.</span></footer>
+  <script src="projects-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
