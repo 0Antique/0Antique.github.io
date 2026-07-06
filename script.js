@@ -68,11 +68,11 @@ musicPlayer.className = 'music-player';
 musicPlayer.setAttribute('aria-label', '音乐播放器');
 
 musicPlayer.innerHTML = `
-  <button class="music-toggle" type="button" aria-label="播放日落大道" aria-pressed="false">▶</button>
+  <button class="music-toggle" type="button" aria-label="播放日落大道" aria-pressed="false"><span class="music-record" aria-hidden="true"></span></button>
   <div class="music-info"><strong>日落大道</strong><span>梁博 · 点击播放</span></div>
   <span class="music-time">0:00 / 4:30</span>
   <div class="music-progress" aria-hidden="true"><i></i></div>
-  <audio preload="metadata" src="assets/audio/sunset-boulevard.m4a"></audio>
+  <audio autoplay preload="auto" src="assets/audio/sunset-boulevard.m4a"></audio>
 `;
 
 document.body.appendChild(musicPlayer);
@@ -103,13 +103,11 @@ const updateMusicUI = () => {
 
 const restoreMusicState = () => {
   const rawState = sessionStorage.getItem(MUSIC_STATE_KEY);
-  if (!rawState) return;
-
-  let state;
+  let state = {};
   try {
-    state = JSON.parse(rawState);
+    if (rawState) state = JSON.parse(rawState) || {};
   } catch {
-    return;
+    state = {};
   }
 
   const restore = async () => {
@@ -118,13 +116,11 @@ const restoreMusicState = () => {
       updateMusicUI();
     }
 
-    if (state.playing) {
-      try {
-        await audio.play();
-      } catch (error) {
-        console.warn('Audio autoplay was rejected:', error.name, error.message);
-        musicLabel.textContent = '点击继续播放';
-      }
+    try {
+      await audio.play();
+    } catch (error) {
+      console.warn('Audio autoplay was rejected:', error.name, error.message);
+      musicLabel.textContent = '浏览器已阻止自动播放 · 点击唱片播放';
     }
   };
 
@@ -151,7 +147,7 @@ musicToggle.addEventListener('click', async () => {
 });
 
 audio.addEventListener('play', () => {
-  musicToggle.textContent = '❚❚';
+  musicPlayer.classList.add('is-playing');
   musicToggle.setAttribute('aria-label', '暂停日落大道');
   musicToggle.setAttribute('aria-pressed', 'true');
   musicLabel.textContent = '梁博 · 正在播放';
@@ -159,7 +155,7 @@ audio.addEventListener('play', () => {
 });
 
 audio.addEventListener('pause', () => {
-  musicToggle.textContent = '▶';
+  musicPlayer.classList.remove('is-playing');
   musicToggle.setAttribute('aria-label', '播放日落大道');
   musicToggle.setAttribute('aria-pressed', 'false');
   musicLabel.textContent = audio.ended ? '梁博 · 播放完毕' : '梁博 · 已暂停';
