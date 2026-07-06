@@ -39,7 +39,8 @@ button { font: inherit; }
   box-shadow: 0 10px 32px rgba(52,88,85,.07); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
 }
 .brand { display: flex; align-items: center; gap: 10px; width: max-content; font-size: 17px; font-weight: 700; }
-.brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 11px; color: #fff; background: var(--brand); box-shadow: 0 7px 14px rgba(53,191,171,.3); }
+.brand-mark { width: 34px; height: 34px; display: block; flex: 0 0 34px; border-radius: 11px; overflow: hidden; background: var(--brand); box-shadow: 0 7px 14px rgba(53,191,171,.3); }
+.brand-mark img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
 nav { display: flex; align-items: center; gap: 6px; padding: 5px; border-radius: 14px; background: rgba(230,241,238,.68); }
 nav a { padding: 8px 16px; border-radius: 10px; color: var(--muted); font-size: 14px; transition: .2s ease; }
 nav a:hover, nav a.active { color: var(--ink); background: rgba(255,255,255,.88); box-shadow: 0 4px 12px rgba(51,79,82,.06); }
@@ -68,8 +69,8 @@ h1 em { color: var(--brand-deep); font-style: normal; }
 .profile-halo::after { inset: 35px -48px; transform: rotate(28deg); }
 .glass-card { border: 1px solid var(--line); background: var(--glass); box-shadow: var(--shadow); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
 .profile-card { position: relative; z-index: 2; width: min(340px, 72vw); margin: 0; padding: 16px; border-radius: 34px; transform: rotate(2deg); }
-.profile-image-wrap { padding: 8px; border-radius: 26px; background: rgba(255,255,255,.6); overflow: hidden; }
-.profile-card img { width: 100%; aspect-ratio: 1; display: block; object-fit: cover; border-radius: 21px; }
+.profile-image-wrap { aspect-ratio: 1; padding: 8px; display: grid; place-items: center; border-radius: 26px; background: rgba(255,255,255,.6); overflow: hidden; }
+.profile-card img { width: 100%; height: 100%; display: block; object-fit: contain; object-position: center; border-radius: 21px; }
 .profile-card figcaption { padding: 16px 8px 3px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 9px; font-size: 13px; font-weight: 600; }
 .profile-card figcaption small { color: var(--muted); font-weight: 400; }
 .online-dot { width: 9px; height: 9px; border-radius: 50%; background: #28c87d; box-shadow: 0 0 0 4px rgba(40,200,125,.13); }

@@ -1,22 +1,15 @@
-const year = document.getElementById('year');
-if (year) year.textContent = new Date().getFullYear();
+const initializePage = () => {
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
 
-const header = document.querySelector('.site-header');
-const sections = document.querySelectorAll('section[id]');
+  document.querySelector('.site-header')?.classList.toggle('scrolled', window.scrollY > 20);
+  loadProjects();
+};
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    document.querySelectorAll('nav a[href^="#"]').forEach((link) => {
-      link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
-    });
-  });
-}, { rootMargin: '-35% 0px -60%' });
+window.addEventListener('scroll', () => {
+  document.querySelector('.site-header')?.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
 
-sections.forEach((section) => observer.observe(section));
-if (header) window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
-
-const projectGrid = document.getElementById('project-grid');
 const pinnedProjects = ['Auto-Visio-Helper', 'Code-helper', 'FedCDKD', 'CFRank'];
 
 const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, (character) => ({
@@ -41,6 +34,7 @@ function projectCard(repository) {
 }
 
 async function loadProjects() {
+  const projectGrid = document.getElementById('project-grid');
   if (!projectGrid) return;
   const cachedProjects = Array.isArray(window.PROJECTS) ? window.PROJECTS : [];
   const renderProjects = (repositories) => {
@@ -67,17 +61,20 @@ async function loadProjects() {
   }
 }
 
-loadProjects();
+const MUSIC_STATE_KEY = 'antique_music_state';
 
 const musicPlayer = document.createElement('aside');
 musicPlayer.className = 'music-player';
 musicPlayer.setAttribute('aria-label', '音乐播放器');
+
 musicPlayer.innerHTML = `
   <button class="music-toggle" type="button" aria-label="播放日落大道" aria-pressed="false">▶</button>
   <div class="music-info"><strong>日落大道</strong><span>梁博 · 点击播放</span></div>
   <span class="music-time">0:00 / 4:30</span>
   <div class="music-progress" aria-hidden="true"><i></i></div>
-  <audio preload="metadata" src="assets/audio/sunset-boulevard.m4a"></audio>`;
+  <audio preload="metadata" src="assets/audio/sunset-boulevard.m4a"></audio>
+`;
+
 document.body.appendChild(musicPlayer);
 
 const audio = musicPlayer.querySelector('audio');
@@ -92,6 +89,52 @@ const formatTime = (seconds) => {
   return `${minutes}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
 };
 
+const saveMusicState = () => {
+  sessionStorage.setItem(MUSIC_STATE_KEY, JSON.stringify({
+    currentTime: audio.currentTime || 0,
+    playing: !audio.paused && !audio.ended
+  }));
+};
+
+const updateMusicUI = () => {
+  musicTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+  musicProgress.style.width = `${audio.duration ? (audio.currentTime / audio.duration) * 100 : 0}%`;
+};
+
+const restoreMusicState = () => {
+  const rawState = sessionStorage.getItem(MUSIC_STATE_KEY);
+  if (!rawState) return;
+
+  let state;
+  try {
+    state = JSON.parse(rawState);
+  } catch {
+    return;
+  }
+
+  const restore = async () => {
+    if (Number.isFinite(state.currentTime)) {
+      audio.currentTime = Math.min(state.currentTime, audio.duration || state.currentTime);
+      updateMusicUI();
+    }
+
+    if (state.playing) {
+      try {
+        await audio.play();
+      } catch (error) {
+        console.warn('Audio autoplay was rejected:', error.name, error.message);
+        musicLabel.textContent = '点击继续播放';
+      }
+    }
+  };
+
+  if (audio.readyState >= HTMLMediaElement.HAVE_METADATA) {
+    restore();
+  } else {
+    audio.addEventListener('loadedmetadata', restore, { once: true });
+  }
+};
+
 musicToggle.addEventListener('click', async () => {
   if (audio.paused) {
     try {
@@ -103,6 +146,8 @@ musicToggle.addEventListener('click', async () => {
   } else {
     audio.pause();
   }
+
+  saveMusicState();
 });
 
 audio.addEventListener('play', () => {
@@ -110,14 +155,81 @@ audio.addEventListener('play', () => {
   musicToggle.setAttribute('aria-label', '暂停日落大道');
   musicToggle.setAttribute('aria-pressed', 'true');
   musicLabel.textContent = '梁博 · 正在播放';
+  saveMusicState();
 });
+
 audio.addEventListener('pause', () => {
   musicToggle.textContent = '▶';
   musicToggle.setAttribute('aria-label', '播放日落大道');
   musicToggle.setAttribute('aria-pressed', 'false');
   musicLabel.textContent = audio.ended ? '梁博 · 播放完毕' : '梁博 · 已暂停';
+  saveMusicState();
 });
+
 audio.addEventListener('timeupdate', () => {
-  musicTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
-  musicProgress.style.width = `${audio.duration ? (audio.currentTime / audio.duration) * 100 : 0}%`;
+  updateMusicUI();
+  saveMusicState();
 });
+
+audio.addEventListener('ended', () => {
+  sessionStorage.setItem(MUSIC_STATE_KEY, JSON.stringify({
+    currentTime: 0,
+    playing: false
+  }));
+});
+
+window.addEventListener('beforeunload', saveMusicState);
+
+restoreMusicState();
+
+let navigationRequest = 0;
+
+const navigateTo = async (url, { updateHistory = true } = {}) => {
+  const requestId = ++navigationRequest;
+  document.documentElement.setAttribute('aria-busy', 'true');
+
+  try {
+    const response = await fetch(url, { headers: { 'X-Requested-With': 'soft-navigation' } });
+    if (!response.ok) throw new Error(`Page request failed: ${response.status}`);
+
+    const nextDocument = new DOMParser().parseFromString(await response.text(), 'text/html');
+    if (requestId !== navigationRequest) return;
+
+    const selectors = ['.ambient', '.site-header', 'main', 'footer'];
+    for (const selector of selectors) {
+      const currentElement = document.querySelector(selector);
+      const nextElement = nextDocument.querySelector(selector);
+      if (!currentElement || !nextElement) throw new Error(`Missing page element: ${selector}`);
+      currentElement.replaceWith(document.importNode(nextElement, true));
+    }
+
+    document.title = nextDocument.title;
+    if (updateHistory) history.pushState({}, '', url);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    initializePage();
+  } catch (error) {
+    console.warn('Soft navigation failed; using a normal page load.', error);
+    window.location.assign(url);
+  } finally {
+    if (requestId === navigationRequest) document.documentElement.removeAttribute('aria-busy');
+  }
+};
+
+document.addEventListener('click', (event) => {
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+  const link = event.target.closest('a[href]');
+  if (!link || link.target || link.hasAttribute('download')) return;
+
+  const destination = new URL(link.href, window.location.href);
+  const isSamePageHash = destination.pathname === window.location.pathname && destination.search === window.location.search && destination.hash;
+  const isHtmlPage = destination.pathname.endsWith('.html') || destination.pathname.endsWith('/');
+  if (destination.origin !== window.location.origin || isSamePageHash || !isHtmlPage) return;
+
+  event.preventDefault();
+  navigateTo(destination.href);
+});
+
+window.addEventListener('popstate', () => navigateTo(window.location.href, { updateHistory: false }));
+
+initializePage();
