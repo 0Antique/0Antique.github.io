@@ -164,7 +164,16 @@ h2 { margin: 0; font-size: clamp(46px, 6vw, 76px); line-height: 1.02; letter-spa
 .music-progress { position: absolute; left: 67px; right: 17px; bottom: 7px; height: 3px; border-radius: 3px; background: rgba(51,79,82,.1); overflow: hidden; }
 .music-progress i { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--brand); }
 
-footer { min-height: 100px; padding: 25px 4px 92px; display: flex; align-items: flex-start; justify-content: space-between; gap: 30px; color: var(--muted); font-size: 12px; }
+footer { min-height: 100px; padding: 25px 4px 92px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 30px; color: var(--muted); font-size: 12px; }
+.footer-contacts { display: flex; align-items: center; justify-content: center; gap: 9px; }
+.contact-link { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 12px; color: #fff; box-shadow: 0 8px 20px rgba(51,79,82,.12); transition: transform .2s ease, box-shadow .2s ease; }
+.contact-link:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(51,79,82,.2); }
+.contact-link svg { width: 18px; height: 18px; fill: currentColor; }
+.contact-link.email { background: #4285f4; }
+.contact-link.bilibili { background: #00aeec; }
+.contact-link.xiaohongshu { background: #ff2442; }
+.contact-link.csdn { background: #fc5531; }
+.footer-tagline { justify-self: end; text-align: right; }
 
 @media (max-width: 900px) {
   .home-hero { grid-template-columns: 1fr; padding-top: 75px; }
@@ -204,7 +213,8 @@ footer { min-height: 100px; padding: 25px 4px 92px; display: flex; align-items: 
   .facts { grid-template-columns: 1fr; }
   .project-card { min-height: 235px; }
   .music-player { right: 8px; bottom: 8px; width: calc(100vw - 16px); }
-  footer { flex-direction: column; padding-left: 4px; }
+  footer { grid-template-columns: 1fr; justify-items: center; padding-left: 4px; padding-right: 4px; text-align: center; }
+  .footer-tagline { justify-self: center; text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
