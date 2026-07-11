@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Antique 的个人网站：联邦学习、LLM 智能体、开源项目与生活。">
-  <meta name="theme-color" content="#edf7f4">
-  <title>Yuanshuo Lin｜Home</title>
+  <meta name="description" content="Antique 的像素跑酷小游戏：控制圆形笑脸 Logo 躲开障碍物。">
+  <meta name="theme-color" content="#eef8f5">
+  <title>Yuanshuo Lin｜Smile Runner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,40 +16,33 @@
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="返回首页"><span class="brand-mark"><img src="https://avatars.githubusercontent.com/u/92249190?v=4" alt="" width="34" height="34"></span><span>Antique</span></a>
     <nav aria-label="主导航">
-      <a class="active" href="index.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">Profile</a>
       <a href="projects.html">Projects</a>
-      <a href="game.html">Game</a>
+      <a class="active" href="game.html">Game</a>
     </nav>
     <a class="header-github" href="https://github.com/0Antique" target="_blank" rel="noreferrer" aria-label="访问 GitHub"><img class="github-icon" src="assets/audio/github.svg" alt="" width="17" height="17"><span>GitHub</span></a>
   </header>
 
-  <main class="home-main">
-    <section class="home-hero">
-      <div class="hero-copy">
-        <h1>Hello, <br> I'm <em>Antique</em></h1>
-        <p class="hero-intro">Master’s student in Computer Science<br><strong>LLM-Based Agent & Federated Learning</strong></p>
-        <p class="hero-note">AI will change the world, and I feel fortunate to be part of this era.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="about.html">Get to Know Me <span>→</span></a>
-          <a class="button secondary" href="projects.html">Browse Projects <span>→</span></a>
+  <main class="game-page">
+    <section class="game-shell glass-card" aria-label="Antique smile runner">
+      <div class="game-intro">
+        <div style="font-size: 24px;   font-weight: bold;">Smile Runner</div>
+      </div>
+
+      <div class="game-stage">
+        <canvas id="antique-game" width="960" height="360" aria-label="像素风 Antique 圆形笑脸跑酷游戏"></canvas>
+      </div>
+
+      <div class="game-panel">
+        <div class="game-stat"><span>SCORE</span><strong id="game-score">00000</strong></div>
+        <div class="game-stat"><span>BEST</span><strong id="game-best">00000</strong></div>
+        <div class="game-actions">
+          <button class="game-button" id="game-start" type="button">Start</button>
+          <button class="game-button muted" id="game-pause" type="button">Pause</button>
         </div>
       </div>
-
-      <div class="profile-scene" aria-label="Antique 个人头像">
-        <div class="profile-halo"></div>
-        <figure class="profile-card glass-card">
-          <div class="profile-image-wrap">
-            <img src="assets/lys.jpg" alt="Antique 的 照片" width="420" height="420">
-          </div>
-          <figcaption><span class="online-dot"></span><span>Exploring AI</span><small>Harbin · China</small></figcaption>
-        </figure>
-        <span class="float-label label-one">Peace & Love</span>
-        <span class="float-label label-two">ESTJ</span>
-        <span class="float-spark" aria-hidden="true">✦</span>
-      </div>
     </section>
-
   </main>
 
   <footer>
@@ -60,7 +53,7 @@
       <a class="contact-link xiaohongshu" href="https://www.xiaohongshu.com/user/profile/69cf4f9f000000003201ca5e" target="_blank" rel="noreferrer" aria-label="访问小红书主页"><span class="xhs-mark" aria-hidden="true">小红书</span></a>
       <a class="contact-link csdn" href="https://blog.csdn.net/m0_56514491" target="_blank" rel="noreferrer" aria-label="访问 CSDN 主页"><svg aria-hidden="true"><use href="assets/icons/social.svg#csdn"></use></svg></a>
     </div>
-    <span class="footer-tagline">It was the best of times, it was the worst of times.</span>
+    <span class="footer-tagline">Jump over deadlines.</span>
   </footer>
   <script src="script.js?v=game-20260711-5"></script>
 </body>

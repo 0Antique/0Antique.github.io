@@ -191,6 +191,25 @@ h2 { margin: 0; font-size: clamp(46px, 6vw, 76px); line-height: 1.02; letter-spa
 .project-state { grid-column: 1/-1; color: var(--muted); }
 .project-state a { text-decoration: underline; }
 
+.game-page { min-height: calc(100vh - 184px); padding: 72px 30px 110px; }
+.game-shell { padding: 28px; border-radius: 30px; overflow: hidden; }
+.game-intro { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.game-intro h1 { margin: 12px 0 0; font-size: clamp(42px, 6vw, 78px); line-height: .96; letter-spacing: -.055em; }
+.game-logo-card { width: 148px; margin: 0; padding: 10px; display: grid; justify-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,255,255,.68); box-shadow: 0 18px 36px rgba(51,79,82,.1); }
+.game-logo-card img { width: 88px; height: 88px; display: block; object-fit: cover; border-radius: 50%; image-rendering: pixelated; }
+.game-logo-card figcaption { color: var(--brand-deep); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.game-stage { position: relative; border: 1px solid rgba(51,79,82,.16); border-radius: 20px; background: linear-gradient(#fbfffb 0 62%, #eef7f4 62% 100%); overflow: hidden; box-shadow: inset 0 -18px 0 rgba(51,79,82,.03); }
+.game-stage::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(51,79,82,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(51,79,82,.045) 1px, transparent 1px); background-size: 16px 16px; opacity: .42; }
+#antique-game { position: relative; z-index: 1; width: 100%; aspect-ratio: 8 / 3; display: block; image-rendering: pixelated; touch-action: manipulation; cursor: pointer; }
+.game-panel { margin-top: 16px; display: grid; grid-template-columns: repeat(2, minmax(110px, 150px)) 1fr; gap: 12px; align-items: stretch; }
+.game-stat { padding: 13px 15px; display: grid; gap: 2px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.62); }
+.game-stat span { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .14em; }
+.game-stat strong { color: var(--ink); font-size: 23px; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.game-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.game-button { min-width: 94px; padding: 0 18px; border: 1px solid rgba(51,79,82,.12); border-radius: 14px; color: #fff; background: var(--ink); font-weight: 800; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease; }
+.game-button:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(51,79,82,.14); }
+.game-button.muted { color: var(--ink); background: rgba(255,255,255,.72); }
+
 .music-player { position: fixed; right: 22px; bottom: 22px; z-index: 30; width: min(340px, calc(100vw - 32px)); padding: 10px; display: grid; grid-template-columns: 46px 1fr auto; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 19px; background: rgba(255,255,255,.78); box-shadow: 0 16px 44px rgba(44,75,74,.18); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
 .music-toggle { width: 46px; height: 46px; padding: 3px; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
 .music-record { position: relative; width: 40px; height: 40px; display: block; border-radius: 50%; background: repeating-radial-gradient(circle, #263f42 0 2px, #39575a 3px 4px, #263f42 5px 7px); box-shadow: 0 7px 16px rgba(38,63,66,.24); animation: record-spin 3s linear infinite; animation-play-state: paused; }
@@ -266,6 +285,14 @@ footer { min-height: 100px; padding: 25px 4px 92px; display: grid; grid-template
   .cv-section { padding-bottom: 42px; margin-bottom: 42px; }
   .facts { grid-template-columns: 1fr; }
   .project-card { min-height: 235px; }
+  .game-page { padding: 58px 8px 88px; }
+  .game-shell { padding: 16px; border-radius: 24px; }
+  .game-intro { align-items: flex-start; }
+  .game-logo-card { width: 116px; border-radius: 18px; }
+  .game-logo-card img { width: 66px; height: 66px; border-radius: 50%; }
+  .game-panel { grid-template-columns: 1fr 1fr; }
+  .game-actions { grid-column: 1 / -1; justify-content: stretch; }
+  .game-button { min-height: 48px; flex: 1; }
   .music-player { right: 8px; bottom: 8px; width: calc(100vw - 16px); }
   footer { grid-template-columns: 1fr; justify-items: center; padding-left: 4px; padding-right: 4px; text-align: center; }
   .footer-tagline { justify-self: center; text-align: center; }
