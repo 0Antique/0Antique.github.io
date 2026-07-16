@@ -564,6 +564,7 @@ let navigationRequest = 0;
 
 const navigateTo = async (url, { updateHistory = true } = {}) => {
   const requestId = ++navigationRequest;
+  const visitCount = document.getElementById('busuanzi_value_site_pv')?.textContent?.trim();
   document.documentElement.setAttribute('aria-busy', 'true');
 
   try {
@@ -579,6 +580,11 @@ const navigateTo = async (url, { updateHistory = true } = {}) => {
       const nextElement = nextDocument.querySelector(selector);
       if (!currentElement || !nextElement) throw new Error(`Missing page element: ${selector}`);
       currentElement.replaceWith(document.importNode(nextElement, true));
+    }
+
+    if (visitCount && visitCount !== '—') {
+      const nextVisitCount = document.getElementById('busuanzi_value_site_pv');
+      if (nextVisitCount) nextVisitCount.textContent = visitCount;
     }
 
     document.title = nextDocument.title;
