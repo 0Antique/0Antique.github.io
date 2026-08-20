@@ -163,6 +163,16 @@ h2 { margin: 0; font-size: clamp(46px, 6vw, 76px); line-height: 1.02; letter-spa
 .interest-list li { padding: 18px 20px; display: grid; grid-template-columns: 190px 1fr; gap: 20px; align-items: baseline; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.5); }
 .interest-list strong { color: var(--ink); }
 .interest-list span { color: var(--muted); line-height: 1.65; }
+.publication-card { padding: 18px; display: grid; grid-template-columns: minmax(240px, .85fr) minmax(0, 1.15fr); gap: 28px; align-items: center; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.5); }
+.publication-figure { position: relative; display: block; color: inherit; }
+.publication-figure span { position: absolute; top: 12px; left: -10px; z-index: 1; padding: 8px 12px; border-radius: 8px; color: #fff; background: var(--brand-deep); font-size: 13px; font-weight: 700; box-shadow: 0 8px 18px rgba(51,79,82,.2); }
+.publication-figure img { width: 100%; display: block; border-radius: 14px; box-shadow: 0 12px 26px rgba(51,79,82,.12); }
+.publication-content h3 { margin: 0 0 12px; font-size: 21px; line-height: 1.45; }
+.publication-content h3 a { color: var(--brand-deep); }
+.publication-content .publication-authors, .publication-content .publication-venue { margin: 0 0 8px; font-size: 15px; line-height: 1.65; }
+.publication-abstract { margin-top: 18px; }
+.publication-abstract summary { width: max-content; padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; color: var(--brand-deep); background: rgba(255,255,255,.7); font-weight: 700; cursor: pointer; }
+.publication-abstract p { margin: 12px 0 0; font-size: 14px; line-height: 1.7; }
 .news-list { display: grid; gap: 10px; }
 .news-list li a { padding: 15px 18px; display: block; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.5); color: var(--ink); }
 .news-list li a:hover { color: var(--brand-deep); transform: translateX(4px); }
@@ -251,8 +261,9 @@ footer { min-height: 100px; padding: 25px 4px 92px; display: grid; grid-template
   .stack-card { min-height: 310px; }
   .profile-page { grid-template-columns: 1fr; gap: 34px; }
   .profile-sidebar { position: static; }
-  .profile-document { padding-top: 0; }
+  .profile-document { grid-column: 1; padding-top: 0; }
   .interest-list li { grid-template-columns: 1fr; gap: 7px; }
+  .publication-card { grid-template-columns: 1fr; }
   .cv-stack-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 680px) {
@@ -285,6 +296,7 @@ footer { min-height: 100px; padding: 25px 4px 92px; display: grid; grid-template
   .profile-avatar { width: 138px; height: 138px; }
   .profile-sidebar h1 { font-size: 38px; }
   .cv-section { padding-bottom: 42px; margin-bottom: 42px; }
+  .publication-card { padding: 14px; gap: 22px; }
   .facts { grid-template-columns: 1fr; }
   .project-card { min-height: 235px; }
   .game-page { padding: 58px 8px 88px; }
