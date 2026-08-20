@@ -5,11 +5,51 @@ const initializePage = () => {
   document.querySelector('.site-header')?.classList.toggle('scrolled', window.scrollY > 20);
   loadProjects();
   initAntiqueGame();
+  initHomeCarousel();
 };
 
 window.addEventListener('scroll', () => {
   document.querySelector('.site-header')?.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
+
+let homeCarouselController = null;
+
+function initHomeCarousel() {
+  homeCarouselController?.destroy();
+  homeCarouselController = null;
+
+  const carousel = document.querySelector('.profile-image-wrap');
+  const slides = Array.from(carousel?.querySelectorAll('.profile-slide') || []);
+  if (!carousel || slides.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let activeIndex = 0;
+  let timer = 0;
+  const showNext = () => {
+    slides[activeIndex].classList.remove('is-active');
+    activeIndex = (activeIndex + 1) % slides.length;
+    slides[activeIndex].classList.add('is-active');
+  };
+  const stop = () => {
+    window.clearInterval(timer);
+    timer = 0;
+  };
+  const start = () => {
+    stop();
+    timer = window.setInterval(showNext, 4000);
+  };
+
+  carousel.addEventListener('pointerenter', stop);
+  carousel.addEventListener('pointerleave', start);
+  start();
+
+  homeCarouselController = {
+    destroy() {
+      stop();
+      carousel.removeEventListener('pointerenter', stop);
+      carousel.removeEventListener('pointerleave', start);
+    }
+  };
+}
 
 const pinnedProjects = ['Auto-Visio-Helper', 'Code-helper', 'FedCDKD', 'CFRank'];
 

@@ -73,7 +73,9 @@ h1 em { color: var(--brand-deep); font-style: normal; }
 .glass-card { border: 1px solid var(--line); background: var(--glass); box-shadow: var(--shadow); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
 .profile-card { position: relative; z-index: 2; width: min(340px, 72vw); margin: 0; padding: 16px; border-radius: 34px; transform: rotate(2deg); }
 .profile-image-wrap { aspect-ratio: 1; padding: 8px; display: grid; place-items: center; border-radius: 26px; background: rgba(255,255,255,.6); overflow: hidden; }
-.profile-card img { width: 100%; height: 100%; display: block; object-fit: contain; object-position: center; border-radius: 21px; }
+.profile-card img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; border-radius: 21px; }
+.profile-slide { grid-area: 1 / 1; opacity: 0; transition: opacity .7s ease; }
+.profile-slide.is-active { opacity: 1; }
 .profile-card figcaption { padding: 16px 8px 3px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 9px; font-size: 13px; font-weight: 600; }
 .profile-card figcaption small { color: var(--muted); font-weight: 400; }
 .online-dot { width: 9px; height: 9px; border-radius: 50%; background: #28c87d; box-shadow: 0 0 0 4px rgba(40,200,125,.13); }
