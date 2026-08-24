@@ -1,45 +1,49 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Antique 的像素跑酷小游戏：控制圆形笑脸 Logo 躲开障碍物。">
+  <meta name="description" content="Antique's pixel runner game: guide the smiling logo past the obstacles." data-i18n-content="meta_game">
   <meta name="theme-color" content="#eef8f5">
-  <title>Yuanshuo Lin｜Smile Runner</title>
+  <title data-i18n="title_game">Yuanshuo Lin｜Smile Runner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=visits-20260716-1">
+  <link rel="stylesheet" href="styles.css?v=i18n-20260824-1">
 </head>
 <body>
   <div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="返回首页"><span class="brand-mark"><img src="https://avatars.githubusercontent.com/u/92249190?v=4" alt="" width="34" height="34"></span><span>Antique</span></a>
-    <nav aria-label="主导航">
-      <a href="index.html">Home</a>
-      <a href="about.html">Profile</a>
-      <a href="projects.html">Projects</a>
-      <a class="active" href="game.html">Game</a>
+    <a class="brand" href="index.html" aria-label="Back to home" data-i18n-aria-label="back_home"><span class="brand-mark"><img src="https://avatars.githubusercontent.com/u/92249190?v=4" alt="" width="34" height="34"></span><span>Antique</span></a>
+    <nav aria-label="Main navigation" data-i18n-aria-label="main_nav">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="about.html" data-i18n="nav_profile">Profile</a>
+      <a href="projects.html" data-i18n="nav_projects">Projects</a>
+      <a class="active" href="game.html" data-i18n="nav_game">Game</a>
     </nav>
     <div class="header-actions">
-      <span id="busuanzi_container_site_pv" class="header-visits" title="Visitors">Visitors <span id="busuanzi_value_site_pv">—</span></span>
-      <a class="header-github" href="https://github.com/0Antique" target="_blank" rel="noreferrer" aria-label="访问 GitHub"><img class="github-icon" src="assets/audio/github.svg" alt="" width="17" height="17"><span>GitHub</span></a>
+      <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="language_switch">
+        <button type="button" data-language="en" aria-pressed="true">EN</button>
+        <button type="button" data-language="zh-CN" aria-pressed="false">CN</button>
+      </div>
+      <span id="busuanzi_container_site_pv" class="header-visits" title="Visitors" data-i18n-title="visitors"><span data-i18n="visitors">Visitors</span> <span id="busuanzi_value_site_pv">—</span></span>
+      <a class="header-github" href="https://github.com/0Antique" target="_blank" rel="noreferrer" aria-label="Visit GitHub" data-i18n-aria-label="visit_github"><img class="github-icon" src="assets/audio/github.svg" alt="" width="17" height="17"><span>GitHub</span></a>
     </div>
   </header>
 
   <main class="game-page">
-    <section class="game-shell glass-card" aria-label="Antique smile runner">
+    <section class="game-shell glass-card" aria-label="Antique smile runner" data-i18n-aria-label="game_shell">
       <div class="game-intro">
-        <div style="font-size: 24px;   font-weight: bold;">Smile Runner</div>
+        <div style="font-size: 24px;   font-weight: bold;" data-i18n="game_heading">Smile Runner</div>
       </div>
 
       <div class="game-stage">
-        <canvas id="antique-game" width="960" height="360" aria-label="像素风 Antique 圆形笑脸跑酷游戏"></canvas>
+        <canvas id="antique-game" width="960" height="360" aria-label="Pixel-art Antique smile runner game" data-i18n-aria-label="game_canvas"></canvas>
       </div>
 
       <div class="game-panel">
-        <div class="game-stat"><span>SCORE</span><strong id="game-score">00000</strong></div>
-        <div class="game-stat"><span>BEST</span><strong id="game-best">00000</strong></div>
+        <div class="game-stat"><span data-i18n="game_score">SCORE</span><strong id="game-score">00000</strong></div>
+        <div class="game-stat"><span data-i18n="game_best">BEST</span><strong id="game-best">00000</strong></div>
         <div class="game-actions">
           <button class="game-button" id="game-start" type="button">Start</button>
           <button class="game-button muted" id="game-pause" type="button">Pause</button>
@@ -50,15 +54,15 @@
 
   <footer>
     <span>© <span id="year"></span> Antique</span>
-    <div class="footer-contacts" aria-label="联系方式">
-      <a class="contact-link email" href="mailto:177885778@qq.com" aria-label="发送邮件"><svg aria-hidden="true"><use href="assets/icons/social.svg#email"></use></svg></a>
-      <a class="contact-link bilibili" href="https://space.bilibili.com/442593230" target="_blank" rel="noreferrer" aria-label="访问 B站主页"><svg aria-hidden="true"><use href="assets/icons/social.svg#bilibili"></use></svg></a>
-      <a class="contact-link xiaohongshu" href="https://www.xiaohongshu.com/user/profile/69cf4f9f000000003201ca5e" target="_blank" rel="noreferrer" aria-label="访问小红书主页"><span class="xhs-mark" aria-hidden="true">小红书</span></a>
-      <a class="contact-link csdn" href="https://blog.csdn.net/m0_56514491" target="_blank" rel="noreferrer" aria-label="访问 CSDN 主页"><svg aria-hidden="true"><use href="assets/icons/social.svg#csdn"></use></svg></a>
+    <div class="footer-contacts" aria-label="Contact links" data-i18n-aria-label="contact_links">
+      <a class="contact-link email" href="mailto:177885778@qq.com" aria-label="Send email" data-i18n-aria-label="send_email"><svg aria-hidden="true"><use href="assets/icons/social.svg#email"></use></svg></a>
+      <a class="contact-link bilibili" href="https://space.bilibili.com/442593230" target="_blank" rel="noreferrer" aria-label="Visit my Bilibili profile" data-i18n-aria-label="visit_bilibili"><svg aria-hidden="true"><use href="assets/icons/social.svg#bilibili"></use></svg></a>
+      <a class="contact-link xiaohongshu" href="https://www.xiaohongshu.com/user/profile/69cf4f9f000000003201ca5e" target="_blank" rel="noreferrer" aria-label="Visit my Xiaohongshu profile" data-i18n-aria-label="visit_xiaohongshu"><span class="xhs-mark" aria-hidden="true">小红书</span></a>
+      <a class="contact-link csdn" href="https://blog.csdn.net/m0_56514491" target="_blank" rel="noreferrer" aria-label="Visit my CSDN profile" data-i18n-aria-label="visit_csdn"><svg aria-hidden="true"><use href="assets/icons/social.svg#csdn"></use></svg></a>
     </div>
-    <span class="footer-tagline">Jump over deadlines.</span>
+    <span class="footer-tagline" data-i18n="footer_game">Jump over deadlines.</span>
   </footer>
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <script src="script.js?v=visits-20260716-1"></script>
+  <script src="script.js?v=i18n-20260824-1"></script>
 </body>
 </html>
